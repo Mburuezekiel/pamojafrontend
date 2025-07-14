@@ -270,7 +270,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-blue-600">
+      <section className="py-16 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Stay Updated
@@ -282,9 +282,9 @@ const HomePage: React.FC = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-l-md outline-2 outline-blue-500 outline-solid"
-            /> 
-            <Button className="rounded-l-none bg-primary  hover:bg-blue-800">
+              className="flex-1 px-4 py-2 rounded-l-md outline-2 outline-grey-500 outline-solid"
+            /> <br/>
+            <Button className="rounded-l-none bg-blue-600  hover:bg-blue-800">
               Subscribe
             </Button>
           </div>

@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
- import Link from 'next/link';
+import Layout from '@/components/common/Layout';
+
+import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone } from 'lucide-react';
-import {Button} from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 interface RegisterData {
   firstName: string;
@@ -100,6 +102,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
   };
 
   return (
+    <Layout>
     <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
@@ -125,9 +128,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.firstName ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.firstName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder="First name"
                 aria-invalid={errors.firstName ? "true" : "false"}
                 aria-describedby={errors.firstName ? "firstName-error" : undefined}
@@ -148,9 +150,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.lastName ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.lastName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder="Last name"
                 aria-invalid={errors.lastName ? "true" : "false"}
                 aria-describedby={errors.lastName ? "lastName-error" : undefined}
@@ -172,9 +173,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Enter your email"
               aria-invalid={errors.email ? "true" : "false"}
               aria-describedby={errors.email ? "email-error" : undefined}
@@ -195,9 +195,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.phone ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="+254 700 123 456"
               aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby={errors.phone ? "phone-error" : undefined}
@@ -218,9 +217,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.password ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Create a password"
               aria-invalid={errors.password ? "true" : "false"}
               aria-describedby={errors.password ? "password-error" : undefined}
@@ -249,9 +247,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Confirm your password"
               aria-invalid={errors.confirmPassword ? "true" : "false"}
               aria-describedby={errors.confirmPassword ? "confirmPassword-error" : undefined}
@@ -272,11 +269,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
         <div>
           <button
             type="submit"
-            className={`w-full py-2 px-4 rounded-md text-white font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-              loading
-                ? 'bg-blue-300 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
-            }`}
+            className={`w-full py-2 px-4 rounded-md text-white font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 ${loading
+                ? 'bg-primary cursor-not-allowed'
+                : 'bg-primary hover:bg-blue-700 focus:ring-blue-500'
+              }`}
             disabled={loading}
           >
             {loading ? 'Registering...' : 'Register'}
@@ -286,11 +282,15 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading = false, 
 
       <div className="mt-6 text-center text-sm text-gray-600">
         Already have an account?{' '}
-        <a href="/login" className="font-medium text-blue-600 hover:text-blue-500">
-          Sign in
-        </a>
+        <Link to="/auth/login" className="text-blue-600 hover:text-blue-500">
+
+
+          Sign In
+
+        </Link>
       </div>
     </div>
+    </Layout>
   );
 };
 

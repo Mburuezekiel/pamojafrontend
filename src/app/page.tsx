@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import LoginForm from '../components/auth/LoginForm';
+import ForgotPassword from '../components/auth/ForgotPassword';
 import RegisterForm from '../components/auth/RegisterForm';
 import { LoginCredentials,RegisterData } from '../types';
 
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/auth/login" element={<LoginForm onSubmit={function (credentials: LoginCredentials): void {
               throw new Error('Function not implemented.');
             } } />} />
+            <Route path="/auth/forgot-password" element={<ForgotPassword />} />
             <Route path="/auth/register" element={<RegisterForm onSubmit={function (data: RegisterData): void {
               throw new Error('Function not implemented.');
             } } />} />

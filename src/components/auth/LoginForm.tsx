@@ -1,12 +1,13 @@
 // src/components/auth/LoginForm.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Eye, EyeOff, Mail, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { LoginCredentials } from "@/types";
+import React, { useState } from 'react';
+import Layout from '@/components/common/Layout';
+import { Link } from 'react-router-dom';
+import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { LoginCredentials } from '@/types';
 
 interface LoginFormProps {
   onSubmit: (credentials: LoginCredentials) => void;
@@ -14,14 +15,10 @@ interface LoginFormProps {
   error?: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  onSubmit,
-  loading = false,
-  error,
-}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading = false, error }) => {
   const [formData, setFormData] = useState<LoginCredentials>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Partial<LoginCredentials>>({});
@@ -30,15 +27,15 @@ const LoginForm: React.FC<LoginFormProps> = ({
     const newErrors: Partial<LoginCredentials> = {};
 
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = 'Please enter a valid email';
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = 'Password is required';
     } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = 'Password must be at least 6 characters';
     }
 
     setErrors(newErrors);
@@ -54,14 +51,15 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
     if (errors[name as keyof LoginCredentials]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
+      setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
 
   return (
+       <Layout>
     <div className="max-w-md mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
@@ -85,16 +83,13 @@ const LoginForm: React.FC<LoginFormProps> = ({
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.email ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Enter your email"
             />
             <Mail size={20} className="absolute left-3 top-2.5 text-gray-400" />
           </div>
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-          )}
+          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
         </div>
 
         <div>
@@ -103,13 +98,12 @@ const LoginForm: React.FC<LoginFormProps> = ({
           </label>
           <div className="relative">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.password ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Enter your password"
             />
             <Lock size={20} className="absolute left-3 top-2.5 text-gray-400" />
@@ -121,9 +115,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
-          {errors.password && (
-            <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-          )}
+          {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
         </div>
 
         <div className="flex items-center justify-between">
@@ -134,10 +126,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
             />
             <span className="ml-2 text-sm text-gray-700">Remember me</span>
           </label>
-          <Link
-            href="/auth/forgot-password"
-            className="text-sm text-blue-600 hover:text-blue-500"
-          >
+          <Link to="/auth/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
             Forgot password?
           </Link>
         </div>
@@ -154,15 +143,18 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
       <div className="mt-6 text-center">
         <p className="text-gray-600">
-          Don't have an account?{" "}
-          <Link to="/auth/register">
-            <Button variant="outline" size="sm">
-              Sign Up
-            </Button>
+          Don't have an account?{' '}
+          <Link to="/auth/register" className="text-blue-600 hover:text-blue-500">
+
+
+            Sign Up
+
           </Link>
         </p>
       </div>
     </div>
+    
+       </Layout>
   );
 };
 
