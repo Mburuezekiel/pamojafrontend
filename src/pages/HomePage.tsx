@@ -7,6 +7,9 @@ import ProductGrid from '@/components/products/ProductGrid';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Smartphone, Laptop, Headphones, Camera, Tv, Watch } from 'lucide-react';
 import { Product } from '@/types';
+import laptop from "@/assets/Products/Laptop.jpeg";
+import Phones from "@/assets/Products/Phones.jpeg";
+import Audio from "@/assets/Products/Audio.jpg";
 
 const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,7 +22,7 @@ const HomePage: React.FC = () => {
       id: 1,
       title: "Latest Smartphones",
       subtitle: "Discover the newest technology",
-      image: "/hero-phone.jpg",
+      image:{Phones},
       cta: "Shop Now",
       link: "/products?category=smartphones"
     },
@@ -27,7 +30,7 @@ const HomePage: React.FC = () => {
       id: 2,
       title: "Gaming Laptops",
       subtitle: "Power up your gaming experience",
-      image: "/hero-laptop.jpg",
+      image: {laptop},
       cta: "Explore",
       link: "/products?category=laptops"
     },
@@ -35,7 +38,7 @@ const HomePage: React.FC = () => {
       id: 3,
       title: "Audio Excellence",
       subtitle: "Premium headphones & speakers",
-      image: "/hero-audio.jpg",
+      image: {Audio},
       cta: "Listen Now",
       link: "/products?category=audio"
     }
